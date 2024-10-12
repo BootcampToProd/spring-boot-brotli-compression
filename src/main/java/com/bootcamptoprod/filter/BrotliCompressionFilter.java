@@ -37,7 +37,7 @@ public class BrotliCompressionFilter implements Filter {
             System.out.println("Initiating response compression");
             // Compress the captured response content with Brotli
             byte[] uncompressedData = wrappedResponse.getResponseData();
-            byte[] brotliCompressedData = Encoder.compress(uncompressedData);
+            byte[] brotliCompressedData = Encoder.compress(uncompressedData, Encoder.Parameters.DEFAULT.setQuality(11));
 
             // Modify response headers
             httpResponse.setHeader("Content-Encoding", "br");
